@@ -16,11 +16,12 @@ export const MainScreen = props => {
       <TouchableOpacity
         style={styles.gridItem}
         onPress={() => {
-          props.navigation.navigate({
-            routeName: 'Category',
-            params: {
-              categoryId: itemData.item.id,
-            },
+          // props.navigation.navigate({
+          //   routeName: 'Category',
+          //   params: {
+          //     categoryId: itemData.item.id,
+          props.navigation.navigate('Category', {
+            categoryId: itemData.item.id,
           });
         }}>
         <View>
