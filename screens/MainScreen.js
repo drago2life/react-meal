@@ -1,27 +1,17 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  FlatList,
-  Touchable,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {CATEGORIES} from '../data/data';
 
-export const MainScreen = props => {
+export const MainScreen = ({navigation}) => {
   const renderGridItem = itemData => {
     return (
       <TouchableOpacity
         style={styles.gridItem}
         onPress={() => {
-          // props.navigation.navigate({
-          //   routeName: 'Category',
-          //   params: {
-          //     categoryId: itemData.item.id,
-          props.navigation.navigate('Category', {
+          navigation.navigate('Category', {
             categoryId: itemData.item.id,
+            categoryTitle: itemData.item.title,
+            categoryColor: itemData.item.color,
           });
         }}>
         <View>
@@ -30,12 +20,14 @@ export const MainScreen = props => {
       </TouchableOpacity>
     );
   };
+
   return (
     <FlatList
       numColumns={2}
       renderItem={renderGridItem}
       data={CATEGORIES}
-      keyExtractor={(item, index) => item.id}
+      // keyExtractor={(item, index) => item.id}
+      keyExtractor={itemData => itemData.id.toString()}
     />
   );
 };

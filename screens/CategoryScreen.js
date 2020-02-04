@@ -1,33 +1,47 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
-import {CATEGORIES} from '../data/data';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import {CATEGORIES, MEALS} from '../data/data';
+import MainScreen from './MainScreen';
 
 export const CategoryScreen = ({navigation}) => {
-  const catId = navigation.getParam('categoryId');
-  const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
-  return (
-    <View style={styles.center}>
-      {/*<Text>{selectedCategory.title}</Text>*/}
-      <Text>{selectedCategory.id}</Text>
-      <Text>{selectedCategory.title}</Text>
-      <Text>HomeScreen</Text>
-      <Button
-        title="Go to Meal"
+  const renderMealItem = itemData => {
+    return (
+      <TouchableOpacity
+        style={styles.gridItem}
         onPress={() => {
-          navigation.navigate({routeName: 'MealDetails'});
-        }}
-      />
-    </View>
+          navigation.navigate('Category', {
+            categoryId: itemData.item.id,
+            categoryTitle: itemData.item.title,
+            categoryColor: itemData.item.color,
+          });
+        }}>
+        <View>
+          <Text>{itemData.item.title}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  const catId = navigation.getParam('categoryId');
+  const displayedMeals = MEALS.filter(
+    meal => meal.categoryIds.indexOf(catId) >= 0,
+  );
+  return (
+    <FlatList
+      numColumns={2}
+      renderItem={renderMealItem}
+      data={displayedMeals}
+      keyExtractor={(item, index) => item.id}
+      // keyExtractor={itemData => itemData.id.toString()}
+    />
   );
 };
-CategoryScreen.navigationOptions = ({navigation}) => {
-  const catId = navigation.getParam('categoryId');
-
-  const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
-
-  return {headerTitle: navigation.getParam(catId)};
-};
-
 
 const styles = StyleSheet.create({
   center: {
@@ -36,5 +50,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+CategoryScreen.navigationOptions = ({navigation}) => {
+  const catTitle = navigation.getParam('categoryTitle');
+
+  return {
+    headerTitle: catTitle,
+  };
+};
 
 export default CategoryScreen;
