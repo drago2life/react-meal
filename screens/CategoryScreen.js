@@ -1,55 +1,39 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
-import {CATEGORIES, MEALS} from '../data/data';
-import MainScreen from './MainScreen';
+import {FlatList} from 'react-native';
+import {MEALS} from '../data/data';
+import MealItem from '../components/MealItem';
 
-export const CategoryScreen = ({navigation}) => {
+export const CategoryScreen = props => {
   const renderMealItem = itemData => {
     return (
-      <TouchableOpacity
-        style={styles.gridItem}
-        onPress={() => {
-          navigation.navigate('Category', {
-            categoryId: itemData.item.id,
-            categoryTitle: itemData.item.title,
-            categoryColor: itemData.item.color,
+      <MealItem
+        image={itemData.item.imageUrl}
+        title={itemData.item.title}
+        duration={itemData.item.duration}
+        complexity={itemData.item.complexity}
+        affordability={itemData.item.affordability}
+        onSelect={() => {
+          props.navigation.navigate('MealDetails', {
+            mealId: itemData.item.id,
+            mealTitle: itemData.item.title,
           });
-        }}>
-        <View>
-          <Text>{itemData.item.title}</Text>
-        </View>
-      </TouchableOpacity>
+        }}
+      />
     );
   };
-  const catId = navigation.getParam('categoryId');
+  const catId = props.navigation.getParam('categoryId');
   const displayedMeals = MEALS.filter(
     meal => meal.categoryIds.indexOf(catId) >= 0,
   );
   return (
     <FlatList
-      numColumns={2}
       renderItem={renderMealItem}
       data={displayedMeals}
-      keyExtractor={(item, index) => item.id}
-      // keyExtractor={itemData => itemData.id.toString()}
+      // keyExtractor={(item, index) => item.id}
+      keyExtractor={itemData => itemData.id.toString()}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 CategoryScreen.navigationOptions = ({navigation}) => {
   const catTitle = navigation.getParam('categoryTitle');

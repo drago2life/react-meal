@@ -1,14 +1,4 @@
 {
-  "name": "NavigationProject",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
-  },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
     "react": "16.9.0",
@@ -36,5 +26,15 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "name": "NavigationProject",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "version": "0.0.1"
 }
