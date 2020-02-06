@@ -17,7 +17,8 @@ const DefaultStackNavOption = {
   headerTintColor: Colors.defaultColor,
   headerTitleStyle: {
     fontFamily: 'OpenSans-Bold',
-    fontSize: 32,
+    fontSize: 24,
+    paddingHorizontal: 20,
   },
 };
 

@@ -35,8 +35,8 @@ export const CategoryScreen = props => {
   );
 };
 
-CategoryScreen.navigationOptions = ({navigation}) => {
-  const catTitle = navigation.getParam('categoryTitle');
+CategoryScreen.navigationOptions = props => {
+  const catTitle = props.navigation.getParam('categoryTitle');
 
   return {
     headerTitle: catTitle,
