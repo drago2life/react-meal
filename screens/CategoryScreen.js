@@ -16,6 +16,7 @@ export const CategoryScreen = props => {
           props.navigation.navigate('MealDetails', {
             mealId: itemData.item.id,
             mealTitle: itemData.item.title,
+            mealImage: itemData.item.imageUrl,
           });
         }}
       />
