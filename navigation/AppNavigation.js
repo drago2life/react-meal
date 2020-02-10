@@ -31,12 +31,20 @@ function MainNavigator() {
   return (
     <MainStack.Navigator
       initialRouteName="Main"
-      // screenOptions={{DefaultStackNavOption}}
-    >
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primayColor,
+        },
+        headerTintColor: Colors.defaultColor,
+        headerTitleStyle: {
+          fontFamily: 'OpenSans-Bold',
+          fontSize: 24,
+          paddingHorizontal: 20,
+        },
+        headerTitleAlign: 'center',
+      }}>
       <MainStack.Screen name="Main" component={MainScreen} />
-
       <MainStack.Screen name="Category" component={CategoryScreen} />
-
       <MainStack.Screen name="MealDetails" component={MealDetailsScreen} />
     </MainStack.Navigator>
   );
@@ -93,13 +101,5 @@ function App() {
 // },
 //   },
 // );
-// const DrawerNavigator = createDrawerNavigator({
-//   PostTabs: {
-//     screen: BottomNavigator,
-//   },
-//   About: {
-//     screen: MealDetailsScreen,
-//   },
-//   Create: CategoryScreen,
-// });
+
 export const AppNavigation = App;
