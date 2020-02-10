@@ -44,8 +44,16 @@ function MainNavigator() {
         headerTitleAlign: 'center',
       }}>
       <MainStack.Screen name="Main" component={MainScreen} />
-      <MainStack.Screen name="Category" component={CategoryScreen} />
-      <MainStack.Screen name="MealDetails" component={MealDetailsScreen} />
+      <MainStack.Screen
+        name="Category"
+        component={CategoryScreen}
+        options={({route}) => ({title: route.params?.categoryTitle})}
+      />
+      <MainStack.Screen
+        name="MealDetails"
+        component={MealDetailsScreen}
+        options={({route}) => ({title: route.params?.mealTitle})}
+      />
     </MainStack.Navigator>
   );
 }
