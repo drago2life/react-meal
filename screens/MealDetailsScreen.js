@@ -4,14 +4,11 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  SectionList,
-  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
 } from 'react-native';
-import {createAppContainer} from 'react-navigation';
-import {MainScreen} from './MainScreen';
-import MealItem from '../components/MealItem';
 import {MEALS} from '../data/data';
-import {Image, ScrollView} from 'react-native-reanimated';
+import CardItem from '../components/MealItem';
 
 const ListItem = props => {
   return (
@@ -22,38 +19,35 @@ const ListItem = props => {
 };
 
 export const MealDetailsScreen = props => {
-  const mealId = props.navigation.getParam('mealId');
+  const mealId = props.route.params?.mealId;
 
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
 
   return (
     <View>
-      <ScrollView >
-        <View>
-          <ImageBackground
-            style={{width: '100%', height: 200}}
-            source={{uri: selectedMeal.imageUrl}}
-          />
-        </View>
-
-        <View>
-          <Text style={styles.title}>Ingredients</Text>
-          {selectedMeal.ingredients.map(ingredient => (
-            <ListItem key={ingredient}>{ingredient}</ListItem>
-          ))}
-        </View>
-        <View>
-          <Text style={styles.title}>Preperation</Text>
-          {selectedMeal.steps.map(steps => (
-            <ListItem key={steps}>{steps}</ListItem>
-          ))}
-        </View>
-      </ScrollView>
+      <View>
+        <ImageBackground
+          style={{width: '100%', height: 200}}
+          source={{uri: selectedMeal.imageUrl}}
+        />
+      </View>
+      <View>
+        <Text style={styles.title}>Ingredients</Text>
+        {selectedMeal.ingredients.map(ingredient => (
+          <ListItem key={ingredient}>{ingredient}</ListItem>
+        ))}
+      </View>
+      <View>
+        <Text style={styles.title}>Preparation</Text>
+        {selectedMeal.steps.map(steps => (
+          <ListItem key={steps}>{steps}</ListItem>
+        ))}
+      </View>
     </View>
   );
 };
 MealDetailsScreen.navigationOptions = props => {
-  const mealTitle = props.navigation.getParam('mealTitle');
+  const mealTitle = props.route.params?.mealTitle;
   return {
     headerTitle: mealTitle,
   };

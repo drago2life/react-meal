@@ -22,7 +22,7 @@ export const CategoryScreen = props => {
       />
     );
   };
-  const catId = props.navigation.getParam('categoryId');
+  const catId = props.route.params?.categoryId;
   const displayedMeals = MEALS.filter(
     meal => meal.categoryIds.indexOf(catId) >= 0,
   );
@@ -37,7 +37,7 @@ export const CategoryScreen = props => {
 };
 
 CategoryScreen.navigationOptions = props => {
-  const catTitle = props.navigation.getParam('categoryTitle');
+  const catTitle = props.route.params?.categoryTitle;
 
   return {
     headerTitle: catTitle,

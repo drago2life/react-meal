@@ -8,7 +8,7 @@ export const FavouritesScreen = props => {
       <Button
         title="Go to Meal"
         onPress={() => {
-          props.navigation.navigate({routeName: 'MealDetails'});
+          props.route.params?.routeName ?? 'MealDetails';
         }}
       />
     </View>
