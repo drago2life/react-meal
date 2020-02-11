@@ -7,7 +7,7 @@ import {MealDetailsScreen} from '../screens/MealDetailsScreen';
 import {CategoryScreen} from '../screens/CategoryScreen';
 import {FavouritesScreen} from '../screens/FavouritesScreen';
 import Colors from '../UI/constants/Colors';
-import {Ionicons, MaterialCommunityIcons} from 'react-native-vector-icons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -74,14 +74,28 @@ function FavouritesNavigator() {
 
 const Tab = createBottomTabNavigator();
 
-function App() {
+function MyTabs() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={MainNavigator} />
-        <Tab.Screen name="Favourite" component={FavouritesNavigator} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Home"
+        component={MainNavigator}
+        options={{
+          tabBarIcon: ({tintColor}) => (
+            <FontAwesome5 name="utensils" size={25} color={tintColor} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favourite"
+        component={FavouritesNavigator}
+        options={{
+          tabBarIcon: ({tintColor}) => (
+            <FontAwesome5 name="star" size={25} color={tintColor} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
@@ -110,4 +124,10 @@ function App() {
 //   },
 // );
 
-export const AppNavigation = App;
+export const AppNavigation = function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+};
