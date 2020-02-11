@@ -76,13 +76,21 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: Colors.defaultColor,
+        activeBackgroundColor: Colors.primayColor,
+      }}>
       <Tab.Screen
         name="Home"
         component={MainNavigator}
         options={{
-          tabBarIcon: ({tintColor}) => (
-            <FontAwesome5 name="utensils" size={25} color={tintColor} />
+          tabBarIcon: () => (
+            <FontAwesome5
+              name="utensils"
+              size={25}
+              color={Colors.secondaryColor}
+            />
           ),
         }}
       />
@@ -90,8 +98,8 @@ function MyTabs() {
         name="Favourite"
         component={FavouritesNavigator}
         options={{
-          tabBarIcon: ({tintColor}) => (
-            <FontAwesome5 name="star" size={25} color={tintColor} />
+          tabBarIcon: () => (
+            <FontAwesome5 name="star" size={25} color={Colors.secondaryColor} />
           ),
         }}
       />
