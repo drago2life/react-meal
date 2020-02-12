@@ -6,13 +6,15 @@ import {
   ImageBackground,
   SafeAreaView,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {MEALS} from '../data/data';
 import CardItem from '../components/MealItem';
+import Colors from '../UI/constants/Colors';
 
 const ListItem = props => {
   return (
-    <View style={styles.listItem}>
+    <View style={styles.text}>
       <Text>{props.children}</Text>
     </View>
   );
@@ -25,20 +27,26 @@ export const MealDetailsScreen = props => {
 
   return (
     <View>
+      <View style={{...styles.cardShortDesc, ...styles.cardRow}}>
+        <Text style={styles.test2}>15 min</Text>
+        <Text style={styles.test2}>complexity </Text>
+        <Text style={styles.test2}>affordability</Text>
+      </View>
       <View>
         <ImageBackground
-          style={{width: '100%', height: 200}}
+          style={styles.bgImage}
           source={{uri: selectedMeal.imageUrl}}
         />
       </View>
+
       <View>
-        <Text style={styles.title}>Ingredients</Text>
+        <Text style={styles.title}>INGREDIENTS</Text>
         {selectedMeal.ingredients.map(ingredient => (
           <ListItem key={ingredient}>{ingredient}</ListItem>
         ))}
       </View>
       <View>
-        <Text style={styles.title}>Preparation</Text>
+        <Text style={styles.title}>PREPARATION</Text>
         {selectedMeal.steps.map(steps => (
           <ListItem key={steps}>{steps}</ListItem>
         ))}
@@ -61,10 +69,42 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'open-sans-bold',
     fontSize: 22,
-    textAlign: 'center',
-    paddingHorizontal: 5,
+    textAlign: 'left',
+    paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: 'rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(230, 230, 250, 0.8)',
+    color: 'rgba(231,76,60,1)',
+    borderTopColor: '#c8c7cc',
+    borderBottomColor: '#c8c7cc',
+    borderStyle: 'solid',
+    borderWidth: 1,
+  },
+  text: {
+    fontFamily: 'open-sans',
+    fontSize: 22,
+    textAlign: 'left',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    color: 'rgba(231,76,60,1)',
+    borderBottomColor: '#c8c7cc',
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
+  },
+  test2: {
+    color: '#ffffff',
+  },
+  cardHeader: {
+    height: '85%',
+  },
+  cardRow: {
+    flexDirection: 'row',
+  },
+  cardShortDesc: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 80,
+    height: '5%',
+    backgroundColor: Colors.primayColor,
   },
 });
 
