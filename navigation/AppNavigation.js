@@ -11,20 +11,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-// const DefaultStackNavOption = {
-//   headerTitleAlign: 'center',
-//   headerStyle: {
-//     backgroundColor: Colors.primayColor,
-//   },
-//
-//   headerTintColor: Colors.defaultColor,
-//   headerTitleStyle: {
-//     fontFamily: 'OpenSans-Bold',
-//     fontSize: 24,
-//     paddingHorizontal: 20,
-//   },
-// };
-
 const MainStack = createStackNavigator();
 
 function MainNavigator() {
@@ -33,7 +19,7 @@ function MainNavigator() {
       initialRouteName="Main"
       screenOptions={{
         headerStyle: {
-          backgroundColor: Colors.primayColor,
+          backgroundColor: Colors.primaryColor,
         },
         headerTintColor: Colors.defaultColor,
         headerTitleStyle: {
@@ -79,7 +65,7 @@ function MyTabs() {
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: Colors.defaultColor,
-        activeBackgroundColor: Colors.primayColor,
+        activeBackgroundColor: Colors.primaryColor,
       }}>
       <Tab.Screen
         name="Home"
@@ -106,31 +92,6 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
-
-// const BottomNavigator = createBottomTabNavigator(
-//   {
-//     Home: {
-//       screen: MainNavigator,
-//     },
-//     Favourite: {
-//       screen: FavouritesNavigator,
-//       navigationOptions: {
-//         tabBarLabel: 'Favourite',
-//         // tabBarIcon: info => (
-//         //   <Ionicons name="ios-star" size={25} color={info.tintColor} />
-//         // ),
-//       },
-//     },
-//   },
-//   {
-// tabBarOptions: {
-//   activeTintColor: '#ffffff',
-//   activeBackgroundColor: '#304ffe',
-//   inactiveTintColor: '#ffffff',
-//   inactiveBackgroundColor: Colors.secondaryColor,
-// },
-//   },
-// );
 
 export const AppNavigation = function App() {
   return (

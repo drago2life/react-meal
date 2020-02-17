@@ -26,17 +26,21 @@ export const MealDetailsScreen = props => {
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
 
   return (
-    <View>
-      <View style={{...styles.cardShortDesc, ...styles.cardRow}}>
-        <Text style={styles.test2}>15 min</Text>
-        <Text style={styles.test2}>complexity </Text>
-        <Text style={styles.test2}>affordability</Text>
-      </View>
-      <View>
-        <ImageBackground
-          style={styles.bgImage}
-          source={{uri: selectedMeal.imageUrl}}
-        />
+    <ScrollView>
+      <View styles={styles.gridItem}>
+        <View style={styles.cardRow}>
+          <View style={styles.cardShortDesc}>
+            <Text style={styles.test2}>15 min</Text>
+            <Text style={styles.test2}>complexity </Text>
+            <Text style={styles.test2}>affordability</Text>
+          </View>
+        </View>
+        <View>
+          <ImageBackground
+            style={styles.bgImage}
+            source={{uri: selectedMeal.imageUrl}}
+          />
+        </View>
       </View>
 
       <View>
@@ -51,7 +55,7 @@ export const MealDetailsScreen = props => {
           <ListItem key={steps}>{steps}</ListItem>
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 MealDetailsScreen.navigationOptions = props => {
@@ -86,9 +90,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     color: 'rgba(231,76,60,1)',
-    borderBottomColor: '#c8c7cc',
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
   },
   test2: {
     color: '#ffffff',
@@ -100,11 +101,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   cardShortDesc: {
+    flex: 1,
     justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: Colors.accentColor,
     paddingHorizontal: 80,
-    height: '5%',
-    backgroundColor: Colors.primayColor,
   },
 });
 

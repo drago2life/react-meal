@@ -1,5 +1,6 @@
 export default {
-  primayColor: 'rgba(74,10,140,0.8)',
-  secondaryColor: '#ff6f00',
+  primaryColor: 'rgba(74,10,140,1)',
+  secondaryColor: 'rgba(255, 111, 0, 1)',
   defaultColor: '#fff',
+  accentColor: 'rgba(74,10,140,0.8)',
 };
