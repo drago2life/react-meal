@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import {MainScreen} from '../screens/MainScreen';
 import {MealDetailsScreen} from '../screens/MealDetailsScreen';
@@ -48,7 +47,19 @@ const FacouritesStack = createStackNavigator();
 
 function FavouritesNavigator() {
   return (
-    <FacouritesStack.Navigator>
+    <FacouritesStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primaryColor,
+        },
+        headerTintColor: Colors.defaultColor,
+        headerTitleStyle: {
+          fontFamily: 'OpenSans-Bold',
+          fontSize: 24,
+          paddingHorizontal: 20,
+        },
+        headerTitleAlign: 'center',
+      }}>
       <FacouritesStack.Screen name="Favourite" component={FavouritesScreen} />
       <FacouritesStack.Screen
         name="MealDetails"

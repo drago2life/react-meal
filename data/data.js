@@ -44,6 +44,7 @@ export const MEALS = [
     true,
     true,
     true,
+    true,
   ),
 
   new Meal(
@@ -70,6 +71,8 @@ export const MEALS = [
     false,
     false,
     false,
+
+    true,
   ),
 
   new Meal(
@@ -99,6 +102,7 @@ export const MEALS = [
     false,
     false,
     true,
+    false,
   ),
 
   new Meal(
@@ -128,6 +132,7 @@ export const MEALS = [
       'Remove, and drain on kitchen paper. Fry the parsley in the remaining oil and drain.',
       'Place the schnitzels on awarmed plate and serve garnishedwith parsley and slices of lemon.',
     ],
+    false,
     false,
     false,
     false,
@@ -164,6 +169,7 @@ export const MEALS = [
     false,
     true,
     true,
+    true,
   ),
 
   new Meal(
@@ -197,6 +203,7 @@ export const MEALS = [
     false,
     true,
     false,
+    true,
   ),
 
   new Meal(
@@ -225,6 +232,7 @@ export const MEALS = [
     true,
     false,
     true,
+    false,
     false,
   ),
 
@@ -257,6 +265,7 @@ export const MEALS = [
     false,
     false,
     true,
+    false,
   ),
 
   new Meal(
@@ -304,6 +313,7 @@ export const MEALS = [
     false,
     true,
     false,
+    true,
   ),
   new Meal(
     'm10',
@@ -329,6 +339,7 @@ export const MEALS = [
       'Mix with asparagus, salad and dressing',
       'Serve with Baguette',
     ],
+    true,
     true,
     true,
     true,
