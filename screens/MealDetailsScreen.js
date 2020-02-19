@@ -39,17 +39,18 @@ export const MealDetailsScreen = props => {
         <View>
           <ImageBackground
             style={styles.bgImage}
-            source={{uri: selectedMeal.imageUrl}}
-          />
-          <View>
-            <FavButton
-              title="Favorite"
-              iconName="star"
-              onPress={() => {
-                console.log('Mark as favorite!');
-              }}
-            />
-          </View>
+            source={{uri: selectedMeal.imageUrl}}>
+            <View style={styles.favbt}>
+              <FavButton
+                name={'heart'}
+                size={30}
+                color={Colors.secondaryColor}
+                onPress={() => {
+                  console.log('Mark as favorite!');
+                }}
+              />
+            </View>
+          </ImageBackground>
         </View>
       </View>
 
@@ -92,6 +93,14 @@ const styles = StyleSheet.create({
     borderBottomColor: '#c8c7cc',
     borderStyle: 'solid',
     borderWidth: 1,
+  },
+  favbt: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+
   },
   text: {
     fontFamily: 'open-sans',

@@ -1,11 +1,33 @@
 import React from 'react';
-import {Button} from 'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import Colors from '../UI/constants/Colors';
 
 const FavButton = props => {
-  return <Button {...props} IconComponent={FontAwesome5} iconSize={23} />;
+  return (
+    // <View style={styles.favbt}>
+    //   <Icon {...props} name={'star'} style={{...styles.favbt}} />
+    // </View>
+    <TouchableOpacity>
+      <View style={{...styles.favbt}}>
+        <Icon {...props} />
+      </View>
+    </TouchableOpacity>
+  );
 };
+
+const styles = StyleSheet.create({
+  favbt: {
+    width: 40,
+    height: 40,
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: Colors.defaultColor,
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default FavButton;
