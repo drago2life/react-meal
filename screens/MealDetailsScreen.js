@@ -11,6 +11,7 @@ import {
 import {MEALS} from '../data/data';
 import CardItem from '../components/MealItem';
 import Colors from '../UI/constants/Colors';
+import FavButton from '../components/FavButton';
 
 const ListItem = props => {
   return (
@@ -40,6 +41,15 @@ export const MealDetailsScreen = props => {
             style={styles.bgImage}
             source={{uri: selectedMeal.imageUrl}}
           />
+          <View>
+            <FavButton
+              title="Favorite"
+              iconName="star"
+              onPress={() => {
+                console.log('Mark as favorite!');
+              }}
+            />
+          </View>
         </View>
       </View>
 
