@@ -8,10 +8,13 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {MEALS} from '../data/data';
+
 import CardItem from '../components/MealItem';
 import Colors from '../UI/constants/Colors';
 import FavButton from '../components/FavButton';
+
+import {useSelector, useDispatch} from 'react-redux';
+import {toggleFavorite} from '../store/actions/meals';
 
 const ListItem = props => {
   return (
@@ -22,10 +25,14 @@ const ListItem = props => {
 };
 
 export const MealDetailsScreen = props => {
+  const availableMeals = useSelector(state => state.meals.meals);
   const mealId = props.route.params?.mealId;
 
-  const selectedMeal = MEALS.find(meal => meal.id === mealId);
-
+  const selectedMeal = availableMeals.find(meal => meal.id === mealId);
+  const dispatch = useDispatch();
+  const toggleFavoriteHandler = useCallback(() => {
+    dispatch(toggleFavorite(mealId));
+  }, [dispatch, mealId]);
   return (
     <ScrollView>
       <View styles={styles.gridItem}>

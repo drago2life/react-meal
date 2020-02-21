@@ -1,9 +1,10 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {MEALS} from '../data/data';
+import {useSelector} from 'react-redux';
 import MealItem from '../components/MealItem';
 
 export const CategoryScreen = props => {
+  const availableMeals = useSelector(state => state.meals.meals);
   const renderMealItem = itemData => {
     return (
       <MealItem
@@ -23,7 +24,7 @@ export const CategoryScreen = props => {
     );
   };
   const catId = props.route.params?.categoryId;
-  const displayedMeals = MEALS.filter(
+  const displayedMeals = availableMeals.filter(
     meal => meal.categoryIds.indexOf(catId) >= 0,
   );
   return (
