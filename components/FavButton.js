@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import Colors from '../UI/constants/Colors';
 

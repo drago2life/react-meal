@@ -1,15 +1,12 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
-  TouchableOpacity,
 } from 'react-native';
 
-import CardItem from '../components/MealItem';
 import Colors from '../UI/constants/Colors';
 import FavButton from '../components/FavButton';
 
@@ -30,9 +27,13 @@ export const MealDetailsScreen = props => {
 
   const selectedMeal = availableMeals.find(meal => meal.id === mealId);
   const dispatch = useDispatch();
+  const currentMealIsFavorite = useSelector(state =>
+    state.meals.favoriteMeals.some(meal => meal.id === mealId),
+  );
   const toggleFavoriteHandler = useCallback(() => {
     dispatch(toggleFavorite(mealId));
   }, [dispatch, mealId]);
+
   return (
     <ScrollView>
       <View styles={styles.gridItem}>
@@ -49,12 +50,10 @@ export const MealDetailsScreen = props => {
             source={{uri: selectedMeal.imageUrl}}>
             <View style={styles.favbt}>
               <FavButton
-                name={'heart'}
+                name={currentMealIsFavorite ? 'heart' : 'heart-o'}
                 size={30}
                 color={Colors.secondaryColor}
-                onPress={() => {
-                  console.log('Mark as favorite!');
-                }}
+                onPress={toggleFavoriteHandler}
               />
             </View>
           </ImageBackground>
@@ -107,7 +106,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     paddingVertical: 20,
     paddingHorizontal: 20,
-
+  },
+  favbtfull: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    color: Colors.defaultColor,
   },
   text: {
     fontFamily: 'open-sans',

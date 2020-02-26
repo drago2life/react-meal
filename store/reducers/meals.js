@@ -13,7 +13,7 @@ const mealsReducer = (state = initialState, action) => {
         meal => meal.id === action.mealId,
       );
       if (existingIndex >= 0) {
-        const updatedFavMeals = {...state.favoriteMeals};
+        const updatedFavMeals = [...state.favoriteMeals];
         updatedFavMeals.splice(existingIndex, 1);
         return {...state, favoriteMeals: updatedFavMeals};
       } else {
@@ -23,7 +23,6 @@ const mealsReducer = (state = initialState, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 export default mealsReducer;
